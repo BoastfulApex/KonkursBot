@@ -15,7 +15,7 @@ async def channels_keyboard(channels):
 
 message_id = 123456789  # The ID of the message sent by the bot
 forward_text = "Forward this message"
-def forward_keyboard():
+async def forward_keyboard():
     forward_button = InlineKeyboardButton(text=forward_text, switch_inline_query=f"\n\nforward {message_id}")
     keyboard = InlineKeyboardMarkup().add(forward_button)
     return keyboard
