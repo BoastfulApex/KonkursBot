@@ -135,7 +135,7 @@ async def get_name(message: types.Message, state: FSMContext):
     user.name = message.text
     user.save()
     # keyboard = forward_keyboard()
-    keyboard = main_keyboard()
+    keyboard = await main_keyboard()
     await message.answer(text=f"Siz konkursda muvaffaqqiyatli a’zo bo’ldingiz", reply_markup=keyboard )
     await state.set_state("main")
 
@@ -143,7 +143,7 @@ async def get_name(message: types.Message, state: FSMContext):
 @dp.message_handler(content_types=types.ContentTypes.TEXT, state="main")
 async def get_name(message: types.Message, state: FSMContext):
     if message.text == "Konkurs haqida":
-        keyboard = forward_keyboard()
+        keyboard = await forward_keyboard()
         # keyboard = main_keyboard()
         await message.answer(text=f"Konkurs haqida ma'lumot", reply_markup=keyboard )
         await state.set_state("main")            
